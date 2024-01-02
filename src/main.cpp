@@ -129,10 +129,10 @@ int main(const char** argv)
 
     if (succeeded) 
     {
-        std::cout << "Edenfall process successfully launched\n";
+        std::cout << "Edenfell process successfully launched\n";
     }
     else 
     {
-        std::cout << "Edenfall process failed to launch. Please check that the directory for Edenfell is correct.\n";
+        std::cout << "Edenfell process failed to launch. Please check that the directory for Edenfell is correct.\n";
     }
 }
