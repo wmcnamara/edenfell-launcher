@@ -124,9 +124,6 @@ int main(const char** argv)
         &process_information                  // Pointer to PROCESS_INFORMATION structure (removed extra parentheses)
     );
 
-    CloseHandle(process_information.hProcess);
-    CloseHandle(process_information.hThread);
-
     if (succeeded) 
     {
         std::cout << "Edenfell process successfully launched\n";
@@ -134,5 +131,16 @@ int main(const char** argv)
     else 
     {
         std::cout << "Edenfell process failed to launch. Please check that the directory for Edenfell is correct.\n";
+
+        //Wait until the user presses enter to close
+        std::string wait_str;
+        std::getline(std::cin, wait_str);
     }
+
+    //If it succeeds, wait until the process dies to kill the launcher
+    WaitForSingleObject(process_information.hProcess, 10000);
+
+    CloseHandle(process_information.hProcess);
+    CloseHandle(process_information.hThread);
+
 }
