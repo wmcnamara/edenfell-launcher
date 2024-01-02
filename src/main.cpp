@@ -97,9 +97,9 @@ int main(const char** argv)
 
     //Create CLI data
     std::string command_line_arguments; 
-    command_line_arguments += "-" + connection_type;
-    command_line_arguments += " -" + ip_address;
-    command_line_arguments += " -" + port_number;
+    command_line_arguments += connection_type;
+    command_line_arguments += " " + ip_address;
+    command_line_arguments += " " + port_number;
 
     //Copy the command line arguments into a vector to get a non const char pointer to pass to CreateProcessA
     std::vector<char> cla_character_buffer(command_line_arguments.begin(), command_line_arguments.end());
