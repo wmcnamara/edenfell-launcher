@@ -97,7 +97,7 @@ int main(const char** argv)
 
     //Create CLI data
     std::string command_line_arguments; 
-    command_line_arguments += " -" + connection_type;
+    command_line_arguments += "-" + connection_type;
     command_line_arguments += " -" + ip_address;
     command_line_arguments += " -" + port_number;
 
@@ -108,7 +108,7 @@ int main(const char** argv)
     std::filesystem::path full_executable_path = std::filesystem::current_path();
     full_executable_path /= std::filesystem::path(edenfell_executable_path);
 
-    std::cout << "Trying to start Edenfell process: " << full_executable_path.string() << command_line_arguments << '\n';
+    std::cout << "Trying to start Edenfell process: " << full_executable_path.string() << ' ' << command_line_arguments << '\n';
 
     bool succeeded = CreateProcessA
     (
