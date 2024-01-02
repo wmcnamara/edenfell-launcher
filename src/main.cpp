@@ -23,8 +23,8 @@ std::string to_lower(std::string str)
 
 void get_ip_and_port_from_user(std::string& ip_address_out, std::string& port_out, const std::regex& ip_address_regex, const std::regex& port_regex)
 {
-    bool hasGoodConnectionData = false;
-    while (!hasGoodConnectionData)
+    bool has_good_ip_address = false;
+    while (!has_good_ip_address)
     {
         std::cout << "Enter an IP Address to connect or host on: ";
         getline(std::cin, ip_address_out);
@@ -34,7 +34,13 @@ void get_ip_and_port_from_user(std::string& ip_address_out, std::string& port_ou
             std::cout << "IP Address is invalid\n";
             continue;
         }
+      
+        has_good_ip_address = true;
+    }
 
+    bool has_good_port_number = false;
+    while (!has_good_port_number) 
+    {
         std::cout << "Enter an port number to connect or host on: ";
         getline(std::cin, port_out);
 
@@ -44,15 +50,16 @@ void get_ip_and_port_from_user(std::string& ip_address_out, std::string& port_ou
             continue;
         }
 
-        std::cout << "\n" << "Connection data: " << ip_address_out << ":" << port_out << '\n';
-        hasGoodConnectionData = true;
+        has_good_port_number = true;
     }
+
+    std::cout << "\n" << "Connection data: " << ip_address_out << ":" << port_out << '\n';
 }
 
 void get_connection_type_from_user(std::string& connection_type_out) 
 {
-    bool hasGoodConnectionType = false;
-    while (!hasGoodConnectionType)
+    bool has_good_connection_type = false;
+    while (!has_good_connection_type)
     {
         std::cout << "Type \"host\" or \"client\" to choose how you will connect: \n";
         getline(std::cin, connection_type_out);
@@ -65,7 +72,7 @@ void get_connection_type_from_user(std::string& connection_type_out)
         }
         else
         {
-            hasGoodConnectionType = true;
+            has_good_connection_type = true;
         }
     }
 }
@@ -142,5 +149,4 @@ int main(const char** argv)
 
     CloseHandle(process_information.hProcess);
     CloseHandle(process_information.hThread);
-
 }
