@@ -30,9 +30,11 @@ Then, open the project files, and start coding!
 
 The launcher will run "edenfell.exe" in its current working directory with the command line arguments like as follows:
 
-Arg 1. Connection type. Either "host" or "client"
-Arg 2. IP Address to host or connect to
-Arg 3. Port number to listen to
+`Arg 1. Connection type.` Either "host" or "client"
+
+`Arg 2. IP Address.` The IP address to either host or connect to
+
+`Arg 3. Port Number.` This is the port to either connect or listen on.
 
 example
 
