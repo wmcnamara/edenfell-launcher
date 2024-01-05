@@ -61,12 +61,12 @@ void get_connection_type_from_user(std::string& connection_type_out)
     bool has_good_connection_type = false;
     while (!has_good_connection_type)
     {
-        std::cout << "Type \"host\" or \"client\" to choose how you will connect: \n";
+        std::cout << "Type \"host\", \"server\", or \"client\" to choose how you will connect: \n";
         getline(std::cin, connection_type_out);
 
         connection_type_out = to_lower(connection_type_out);
 
-        if (connection_type_out != "host" && connection_type_out != "client")
+        if (connection_type_out != "host" && connection_type_out != "client" && connection_type_out != "server")
         {
             std::cout << "invalid connection type\n";
         }
@@ -90,17 +90,13 @@ int main(const char** argv)
 
     const std::regex port_regex("^([1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$");
 
-    //Get connection type (host or client)
+    //Get connection type (host, server or client)
     std::string connection_type;
     get_connection_type_from_user(connection_type);
 
     //Get the IP address and port number
     std::string ip_address, port_number;
     get_ip_and_port_from_user(ip_address, port_number, ip_address_regex, port_regex);
-
-    // Start the edenfell process
-    STARTUPINFO startup_info{};
-    PROCESS_INFORMATION process_information{};
 
     //Create CLI data
     std::string command_line_arguments; 
@@ -114,6 +110,10 @@ int main(const char** argv)
     //Create a full filepath for Edenfell to output
     std::filesystem::path full_executable_path = std::filesystem::current_path();
     full_executable_path /= std::filesystem::path(edenfell_executable_path);
+
+    // Start the edenfell process
+    STARTUPINFO startup_info{};
+    PROCESS_INFORMATION process_information{};
 
     std::cout << "Trying to start Edenfell process: " << full_executable_path.string() << ' ' << command_line_arguments << '\n';
 
