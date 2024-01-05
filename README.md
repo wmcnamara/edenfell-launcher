@@ -30,7 +30,7 @@ Then, open the project files, and start coding!
 
 The launcher will run "edenfell.exe" in its current working directory with the command line arguments like as follows:
 
-`Arg 1. Connection type.` Either "host" or "client"
+`Arg 1. Connection type.` Either "host", server or "client"
 
 `Arg 2. IP Address.` The IP address to either host or connect to
 
