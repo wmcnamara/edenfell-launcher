@@ -146,7 +146,7 @@ int main(const char** argv)
     }
 
     //If it succeeds, wait until the process dies to kill the launcher
-    WaitForSingleObject(process_information.hProcess, 10000);
+    WaitForSingleObject(process_information.hProcess, 1000);
 
     CloseHandle(process_information.hProcess);
     CloseHandle(process_information.hThread);
